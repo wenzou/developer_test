@@ -1,0 +1,19 @@
+ <html>
+    <head>
+        <title>RSS Feed Interface</title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div id="container">
+            <div class="title">
+                <h1>Results with feed query</h1>
+            </div>
+            <div id="content">
+                Credits:
+                {% for credit in credits %}
+                <p>{{ credit }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>

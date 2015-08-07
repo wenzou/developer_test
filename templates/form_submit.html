@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>RSS Feed</title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div id="container">
+            <div class="title">
+                <h1>Query RSS Feed </h1>
+            </div>
+            <div id="content">
+                <form method="post" action="{{ url_for('hello') }}">
+                  <label for="guids">Please enter guid(s):</label>
+                  <input type="text" name="guids" /><br />
+                  <label for="youremail">Please enter your email:</label>
+                  <input type="text" name="youremail" /><br />
+                  <input type="submit" />
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
+ 
