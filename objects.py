@@ -21,11 +21,29 @@ class CreditManager:
         self.data_root = etree.fromstring(feed_data)
 
     def return_credits(self, guids):
-        item = self.data_root.findall(".//*[guid='" + guids[0] + "']")
-        credits = item[0].findall(".//{http://search.yahoo.com/mrss/}credit")
         creditList = []
-        for credit in credits:
-            creditList.append(credit.text)
+        try:
+            for guid in guids:
+                item = self.data_root.findall(".//*[guid='" + guid + "']")
+                credits = item[0].findall(".//{http://search.yahoo.com/mrss/}credit")
+                for credit in credits:
+                    creditList.append(credit.text)
+        except Exception:
+            pass
         return creditList
 
+    def return_guids(self, credits):
+        guidList = []
+        key = '{http://search.yahoo.com/mrss/}credit'
+        try:
+            #for each credits input
+            for credit in credits:
+                #find all items
+                elements = self.data_root.findall(".//*["+key+"='" + credit + "']")
+                #elements = item[0].findall(".//{http://search.yahoo.com/mrss/}guid")
+                for element in elements:
+                    guidList.append(element.findall(".//guid")[0].text)
+        except Exception:
+            pass
+        return guidList
 

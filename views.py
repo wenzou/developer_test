@@ -7,9 +7,18 @@ from objects import CreditManager
 app = Flask(__name__)
 
 # Define a route for the default URL, which loads the form
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def form():
-    return render_template('form_submit.html')
+    if request.method == 'POST':
+        myCreditManager = CreditManager()
+        guid_string=request.form['input1']
+        guids = guid_string.split(';')
+        creditsRequest=request.form['credits']
+        creditsFromGuids = myCreditManager.return_credits([guids])
+        return render_template('form_submit.html', guids=guids, credits=creditsFromGuids)
+    else:
+        return render_template('form_submit.html')
+
 
 # Define a route for the action of the form, for example '/hello/'
 # We are also defining which type of requests this route is 

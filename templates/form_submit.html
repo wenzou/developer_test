@@ -9,13 +9,23 @@
                 <h1>Query RSS Feed </h1>
             </div>
             <div id="content">
-                <form method="post" action="{{ url_for('hello') }}">
-                  <label for="guids">Please enter guid(s):</label>
-                  <input type="text" name="guids" /><br />
-                  <label for="youremail">Please enter your email:</label>
-                  <input type="text" name="youremail" /><br />
+                <form method="post" action="/" ajaxform>
+                  <label for="input1">Please enter up to 5 guid(s) or credit(s):</label>
+                  <input type="text" rows="4" cols="50" size="50" name="input1"/><br />
+                  <input type="text" rows="4" cols="50" size="50" name="input2"/><br />
                   <input type="submit" />
                 </form>
+            </div>
+        </div>
+        <div id="result_container">
+            <div class="title">
+                <h1>Results with feed query</h1>
+            </div>
+            <div id="result_content">
+                Credits:
+                {% for credit in credits %}
+                <p>{{ credit }}</p>
+                {% endfor %}
             </div>
         </div>
     </body>
