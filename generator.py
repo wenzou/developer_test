@@ -1,10 +1,16 @@
 import xml.etree.cElementTree as ET
 
 root = ET.Element("root")
-doc = ET.SubElement(root, "doc")
-
-ET.SubElement(doc, "guid", name="blah").text = "123"
-ET.SubElement(doc, "media:credit", name="asdfasd").text = "Some Name"
+root.set('xmlns:media', "http://search.yahoo.com/mrss/")
+for i in range(1, 1000000):
+    doc = ET.SubElement(root, "doc")
+    id = "id_"
+    id += `i`
+    ET.SubElement(doc, "guid", name="blah").text = id
+    for j in range(1, 5):
+        string = id + "Some Name"
+        string += `j`
+        ET.SubElement(doc, "media:credit", name="asdfasd").text = string
 
 tree = ET.ElementTree(root)
-tree.write("filename.xml")
+tree.write("filename1000000.xml")

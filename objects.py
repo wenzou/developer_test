@@ -17,33 +17,34 @@ class CreditManager:
         #close file because we dont need it anymore:
         feed_file.close()
 
-        #entire feed
+        #create a tree from the entire feed data
         self.data_root = etree.fromstring(feed_data)
 
     def return_credits(self, guids):
-        creditList = []
-        try:
-            for guid in guids:
-                item = self.data_root.findall(".//*[guid='" + guid + "']")
-                credits = item[0].findall(".//{http://search.yahoo.com/mrss/}credit")
-                for credit in credits:
-                    creditList.append(credit.text)
-        except Exception:
-            pass
-        return creditList
+        input_key = 'guid'
+        return_key = './/{http://search.yahoo.com/mrss/}credit'
+        return self.return_elements(guids, input_key, return_key)
 
     def return_guids(self, credits):
-        guidList = []
-        key = '{http://search.yahoo.com/mrss/}credit'
+        input_key = '{http://search.yahoo.com/mrss/}credit'
+        return_key = './/guid'
+        return self.return_elements(credits, input_key, return_key)
+
+    def return_elements(self, inputs, input_key=None, return_key=None):
+        returnList = []
         try:
             #for each credits input
-            for credit in credits:
-                #find all items
-                elements = self.data_root.findall(".//*["+key+"='" + credit + "']")
-                #elements = item[0].findall(".//{http://search.yahoo.com/mrss/}guid")
-                for element in elements:
-                    guidList.append(element.findall(".//guid")[0].text)
+            for input in inputs:
+                #find all elements based on the input key
+                inputElements = self.data_root.findall(".//*["+input_key+"='" + input + "']")
+                #for all input elements
+                for inputElement in inputElements:
+                    #find return elements based on the input elements.
+                    returnElements = inputElement.findall(return_key)
+                    for returnElement in returnElements:
+                        #collect all the return elements.
+                        returnList.append(returnElement.text)
         except Exception:
             pass
-        return guidList
+        return returnList
 

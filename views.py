@@ -7,30 +7,31 @@ from objects import CreditManager
 app = Flask(__name__)
 
 # Define a route for the default URL, which loads the form
+
+GUID_TYPE = 0
+CREDIT_TYPE = 1
+
 @app.route('/', methods=['GET', 'POST'])
 def form():
     if request.method == 'POST':
         myCreditManager = CreditManager()
-        guid_string=request.form['input1']
-        guids = guid_string.split(';')
-        creditsRequest=request.form['credits']
-        creditsFromGuids = myCreditManager.return_credits([guids])
-        return render_template('form_submit.html', guids=guids, credits=creditsFromGuids)
+        inputs = []
+        input_type = CREDIT_TYPE
+        #probably want some proper form validation later
+        for i in range(1, 5):
+            key = 'input'
+            key += `i`
+            if key in request.form and request.form[key] is not u'':
+                inputs.append(request.form[key])
+                if "tag:" in request.form[key]:
+                    input_type = GUID_TYPE
+        if input_type == CREDIT_TYPE:
+            return_data = myCreditManager.return_guids(inputs)
+        else:
+            return_data = myCreditManager.return_credits(inputs)
+        return render_template('form_submit.html', error='', return_data=return_data)
     else:
         return render_template('form_submit.html')
-
-
-# Define a route for the action of the form, for example '/hello/'
-# We are also defining which type of requests this route is 
-# accepting: POST requests in this case
-@app.route('/hello/', methods=['POST'])
-def hello():
-    myCreditManager = CreditManager()
-    guids=request.form['guids']
-    email=request.form['youremail']
-    creditsFromGuids = myCreditManager.return_credits([guids])
-    print creditsFromGuids
-    return render_template('form_action.html', name=email, credits=creditsFromGuids)
 
 # Run the app :)
 if __name__ == '__main__':

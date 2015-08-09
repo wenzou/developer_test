@@ -10,9 +10,12 @@
             </div>
             <div id="content">
                 <form method="post" action="/" ajaxform>
-                  <label for="input1">Please enter up to 5 guid(s) or credit(s):</label>
-                  <input type="text" rows="4" cols="50" size="50" name="input1"/><br />
-                  <input type="text" rows="4" cols="50" size="50" name="input2"/><br />
+                  <label for="input1">Please enter up to 5 guid(s) or credit(s), please enter all the same type:</label>
+                  <input type="text" size="50" name="input1"/><br />
+                  <input type="text" size="50" name="input2"/><br />
+                  <input type="text" size="50" name="input3"/><br />
+                  <input type="text" size="50" name="input4"/><br />
+                  <input type="text" size="50" name="input5"/><br />
                   <input type="submit" />
                 </form>
             </div>
@@ -22,10 +25,13 @@
                 <h1>Results with feed query</h1>
             </div>
             <div id="result_content">
-                Credits:
-                {% for credit in credits %}
-                <p>{{ credit }}</p>
+                Results:
+                {% for data in return_data %}
+                <p>{{ data }}</p>
                 {% endfor %}
+                {% if error %}
+                <p>{{error}}</p>
+                {% endif %}
             </div>
         </div>
     </body>

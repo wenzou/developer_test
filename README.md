@@ -4,17 +4,27 @@ objects.py includes the creditManager objects
 
 This application was developed and tested under Python 2.7
 
-Using the creditManager with the interactive console
->>> from objects import creditManager
->>> myCreditmanager = creditManager()
-credit Manager created
+Running WebApp
+1. Install flask -> pip install flask
+2. python views.py
 
 Running Tests
 python tests.py
 
-Running WebApp
-1. Install flask -> pip install flask
-2. python views.py
+Local Performance Tests
+Returning credits from one guid
+5000 guids = 9s
+10000 guids = 14s
+100000 guids = 130s
+1000000 guids = 1403.785s ~ 23 mins
+O(n) performance. 
+Return guid from one credit
+
+
+1000000 guids = 1466.310s
+
+All guids have 5 credits
+
 
 
 Q&A on Spec
