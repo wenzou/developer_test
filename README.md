@@ -11,6 +11,12 @@ Running WebApp
 Running Tests
 python tests.py
 
+To run tests with large sets of data of xml data. 
+1. In tests.py under setUp method, 
+2. Update the self.local_xml_file to an absolute path to a file under the test_data folder
+3. The testdata10000, means that there are 10000 guids, and 5 credits per guid. 
+
+
 Local Performance Tests
 Returning credits from one guid
 5000 guids = 9s

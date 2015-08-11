@@ -21,13 +21,16 @@ def form():
         for i in range(1, 5):
             key = 'input'
             key += `i`
+            #loop through all the 5 fields
             if key in request.form and request.form[key] is not u'':
                 inputs.append(request.form[key])
                 if "tag:" in request.form[key]:
                     input_type = GUID_TYPE
         if input_type == CREDIT_TYPE:
+            #if input is credit type, then return the guids
             return_data = myCreditManager.return_guids(inputs)
         else:
+            #else if input are guids, then return the credits
             return_data = myCreditManager.return_credits(inputs)
         return render_template('form_submit.html', error='', return_data=return_data)
     else:

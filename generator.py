@@ -1,5 +1,6 @@
 import xml.etree.cElementTree as ET
 
+#this is a simply generator that generates large xml for testing
 root = ET.Element("root")
 root.set('xmlns:media', "http://search.yahoo.com/mrss/")
 for i in range(1, 1000000):
