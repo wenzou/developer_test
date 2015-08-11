@@ -4,36 +4,39 @@ objects.py includes the creditManager objects
 
 This application was developed and tested under Python 2.7
 
-Running WebApp
+##Running WebApp
 1. Install flask -> pip install flask
 2. python views.py
 
-Running Tests
+##Running Tests
 python tests.py
 
 To run tests with large sets of data of xml data. 
+
 1. In tests.py under setUp method, 
 2. Update the self.local_xml_file to an absolute path to a file under the test_data folder
 3. The testdata10000, means that there are 10000 guids, and 5 credits per guid. 
 
 
-Local Performance Tests
+##Local Performance Tests
 Returning credits from one guid
-5000 guids = 9s
-10000 guids = 14s
-100000 guids = 130s
-1000000 guids = 1403.785s ~ 23 mins
+
+* 5000 guids = 9s
+* 10000 guids = 14s
+* 100000 guids = 130s
+* 1000000 guids = 1403.785s ~ 23 mins
+
 O(n) performance. 
+
 Return guid from one credit
 
-
-1000000 guids = 1466.310s
+* 1000000 guids = 1466.310s
 
 All guids have 5 credits
 
 
+##Q&A on Spec
 
-Q&A on Spec
 1. Which part is the guid? Everything within the guid tag?
 2. Assumption is python, no framework like django? We would have to display html
 3. Whats the format for the credits? just string. 
