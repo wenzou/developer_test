@@ -9,6 +9,7 @@ class TestCreditManager(unittest.TestCase):
         #this local xml file path must be absolute
         self.local_xml_file = False# 'file:///Users/wenzou/PycharmProjects/developer_test/test_data/testdata1000000.xml'
 
+
     def test_no_guid(self):
         credits = self.creditManager.return_credits([])
         self.assertEqual(credits, [])
@@ -139,5 +140,6 @@ class TestFastCreditManager(unittest.TestCase):
     def test_three_credits(self):
         guids = self.creditManager.return_guids(['Washington Lottery', 'Jerry Brown', 'Sticks & Stones'])
         self.assertEqual(guids, ['tag:wiredrive,2011-03-18:token:128b053b916ea1f7f20233e8a26bc45d:21253'])
+
 if __name__ == '__main__':
     unittest.main()

@@ -5,9 +5,11 @@ objects.py includes the creditManager objects
 This application was developed and tested under Python 2.7
 
 
+
 ##Running WebApp
 1. Install flask -> pip install flask
 2. python views.py
+
 
 ##Running Tests
 python tests.py

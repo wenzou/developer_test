@@ -17,6 +17,7 @@ class CreditManager:
         #create a tree from the entire feed data
         self.data_root = tree.getroot()
 
+
     def return_credits(self, guids):
         input_key = 'guid'
         return_key = './/{http://search.yahoo.com/mrss/}credit'
@@ -112,5 +113,6 @@ class FasterCreditManager:
             elif event == "end" and elem.tag == input_key and elem.text in credits:
                 credits_found+= 1
             root.clear()
+
 
         return items_to_return
