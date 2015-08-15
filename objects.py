@@ -104,7 +104,7 @@ class FasterCreditManager:
                 #if the credits found is the same as the credits input, the reutrn the current guid
                 if len(items_to_return) == 0:
                     items_to_return.append(current_guid)
-                #break
+                    break
             if event == "end" and elem.tag == return_key:
                 #if we found a guid, then set the current guid
                 current_guid = elem.text
