@@ -3,7 +3,7 @@
 # we'll use url_for to get some URLs for the app on the templates
 import os
 from flask import Flask, render_template, request, url_for
-from objects import CreditManager
+from objects import CreditManager, FasterCreditManager
 # Initialize the Flask application
 app = Flask(__name__)
 
@@ -15,7 +15,7 @@ CREDIT_TYPE = 1
 @app.route('/', methods=['GET', 'POST'])
 def form():
     if request.method == 'POST':
-        myCreditManager = CreditManager()
+        myCreditManager = FasterCreditManager()
         inputs = []
         input_type = CREDIT_TYPE
         #probably want some proper form validation later
