@@ -1,6 +1,6 @@
 This is a read me
 
-objects.py includes the creditManager objects
+objects.py includes the creditManager and FasterCreditManager
 
 This application was developed and tested under Python 2.7
 
@@ -22,8 +22,9 @@ To run tests with large sets of data of xml data.
 
 
 ##Local Performance Tests
-###Performance Test using cElementTree Library with iterate method
+###Performance Test using cElementTree Library with iterate method - this is the FasterCreditManager
 Returning credits from one guid
+
 Best Case - guid at the beginning of the xml
 
 * 5000 guids = 0.86s
@@ -43,6 +44,7 @@ Worst Case - guid at the end of the xml
 O(N) performance - this is pretty bad, but without the overhead of loading the elements into memory. 
 
 Return guid from one credit
+
 Best Case - credit at the beginning of the xml
 
 * 5000 guids = 0.81s
@@ -61,13 +63,14 @@ Worst Case - credit at the end of the xml
 
 O(N) performance - this is pretty bad, but without the overhead of loading the elements into memory. 
 
-###Performance Test using cElementTree Library
+###Performance Test using cElementTree Library - this is the creditManager
 Returning credits from one guid
 
 * 5000 guids = 5.859s
 * 10000 guids = 12s
 * 100000 guids = 32.2221s
 * 1000000 guids = 206s
+
 O(Log(N)) performance 
 
 Return guid from one credit
